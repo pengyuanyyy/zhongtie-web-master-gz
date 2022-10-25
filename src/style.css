@@ -1,0 +1,206 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif, 'jiuss number' ,'TTMeiHeiJ-2';
+  font-size: 16px;
+  /* line-height: 24px; */
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+} */
+/* button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  /* max-width: 1920px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+
+
+
+
+@font-face {
+    font-family: "jiuss title";
+    font-weight: 700;
+    src: url("./assets/font/9sTj_T-bNbZ1xn6pcss9B.woff2") format("woff2"), 
+        url("./assets/font/9sTj_T-bNbZ1xn6pcss9B.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "jiuss number";
+    font-weight: 700;
+    src: url("./assets/font/gvEPRT0jhHCd6oDtv977D.woff2") format("woff2"),
+        url("./assets/font/gvEPRT0jhHCd6oDtv977D.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "TTMeiHeiJ-2";
+    src: url("./assets/font/TTMeiHeiJ-2.ttf");
+    font-display: swap;
+}
+
+.jiuss_Bold {
+    font-family: 'TTMeiHeiJ-2';
+    letter-spacing: .1em
+}
+
+.jiuss_Number {
+    font-family: 'jiuss number';
+    font-size: 18px !important;
+    letter-spacing: .4em
+}
+
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    width: 100%;
+    vertical-align: bottom;
+    display: block;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+input,
+textarea,
+select {
+    vertical-align: middle;
+    color: #666;
+    outline: none;
+    font-family: '微软雅黑';
+    border: none;
+    resize: none;
+    background-color: transparent;
+}
+
+button {
+    outline: none;
+    cursor: pointer;
+}
+
+select {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:after {
+    content: "";
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.disnone {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
