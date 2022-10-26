@@ -18,9 +18,9 @@ const useLayoutStore = defineStore('layout',{
     actions: {
         async getHomeHotList () {
             // setTimeout(async() => {
-            const res = await request.get('/api_Company1000/GetWeather?cityCode=101280101')
+            const res = await request.get('/api/Common/getWeather?cityCode=101280101')
                        
-            this.weatherList = res.data
+            this.weatherList = res.data.data
             // console.log(123);
             
             // console.log(this.weatherList);

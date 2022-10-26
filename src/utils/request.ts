@@ -4,7 +4,7 @@ import axios from "axios";
 
 // const { user } = useStore()
 
-export const baseURL = 'https://www.pc301.cn/'
+export const baseURL = 'http://110.80.41.154:50001/'
 const instance = axios.create({
     baseURL,
     timeout: 5000
@@ -13,6 +13,8 @@ const instance = axios.create({
   // http://110.80.41.154:50001/WeatherForecast?cityCode=101280101
   // https://www.pc301.cn/api_Company1000/
   // https://www.pc301.cn/api_Company1000/GetWeather?cityCode=101280101
+
+  // http://110.80.41.154:50001/api/Common/getWeather?cityCode=101280101
 
   // api/GP_GuanPian/index/GetWeather
   // 添加请求拦截器

@@ -4,7 +4,7 @@ import useStore from "@/store/index";
 
 import {onBeforeRouteLeave} from "vue-router";
 import pic01 from "@/assets/images/img/视频监控.jpg";
-import { init } from "@/utils/echartsDom/tabs2SceneDisplayEchartsDom";
+import { init1 ,init2,init3} from "@/utils/echartsDom/tabs2SceneDisplayEchartsDom";
 
 const main = ref() // 使用ref创建虚拟DOM引用，使用时用main.value
 
@@ -15,7 +15,7 @@ const main = ref() // 使用ref创建虚拟DOM引用，使用时用main.value
 const  {tabs2SceneDisplay}  = useStore() 
 const  {appFlexLeft}  = useStore() 
                     
-// echarts
+
 
 
 
@@ -97,10 +97,22 @@ const showDialog = (name:any , imgSrc:any) => {
             identification.value = tabs2SceneDisplay.list1[isActiveIndex].identification
             // 检验 数组对应项的标识号 如果标识号为3 则渲染dom
             if (identification.value === '3') {
-                nextTick(()=>{
-                //4.在组件挂载的生命周期中获取到DOm节点
 
-                    init(main,tabs2SceneDisplay.echartsDomList)
+
+                //4.在组件挂载的生命周期中获取到DOM节点
+                nextTick(()=>{
+                    // 根据echartsDomName 判定传入的echarts信息数据
+                    if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init1') {
+                        init1(main,tabs2SceneDisplay.echartsDomList)
+                    }
+                    if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init2') {
+                        init2(main,tabs2SceneDisplay.echartsDomList)
+                    }                    
+                    if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init3') {
+                        init3(main,tabs2SceneDisplay.echartsDomList)
+                    }                    
+
+                    
                 })
             
             }

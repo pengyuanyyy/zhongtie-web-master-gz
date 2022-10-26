@@ -69,12 +69,13 @@ const useTabs2SceneDisplayStore = defineStore('tabs2SceneDisplay',{
                 // identification:'3' dialog弹框内渲染3D图
                 //list: ['大门', '办公楼', '钢筋车间', '浇筑1线', '浇筑2线', '水养池', '堆场', '地磅', '搅拌站', '试验室']
                 list1: [
-                    { name: '大门', list: [] ,btnLevel:'1',isActive:false, imgSrc: '',identification:'3' ,leftMiddelListVisible: false },
-                    { name: '办公楼', list: [],btnLevel:'1',isActive:false, imgSrc: pic02 ,leftMiddelListVisible: false },
+                    { name: '大门', list: [] ,btnLevel:'1',isActive:false, imgSrc: '',identification:'3', echartsDomName: 'init1' , leftMiddelListVisible: false },
+                    { name: '办公楼', list: [],btnLevel:'1',isActive:false, imgSrc: '' ,identification:'3',echartsDomName: 'init2', leftMiddelListVisible: false },
                     {
                         name: '钢筋车间',
                         btnLevel:'2',
                         leftMiddelListVisible: false, 
+                        echartsDomName: '',
                         list: [
                             { title: '钢筋笼生产统计', image:  tip1_1 ,isActive:false, imgSrc: pic02 },
                             { title: '今日钢筋用料',   image:  tip1_2 ,isActive:false, imgSrc: pic02 },
@@ -148,7 +149,7 @@ const useTabs2SceneDisplayStore = defineStore('tabs2SceneDisplay',{
                             { title: '原料库存数量', image: tip7_2,isActive:false, imgSrc: pic02 }
                         ]
                     },
-                    { name: '试验室', list: [] ,btnLevel:'1',isActive:false, imgSrc: pic01 ,leftMiddelListVisible: false }
+                    { name: '试验室', list: [] ,btnLevel:'1',isActive:false,identification:'3',echartsDomName: 'init3', imgSrc: pic01 ,leftMiddelListVisible: false }
                 ] , 
 
             companyName:'可切换tab2',
