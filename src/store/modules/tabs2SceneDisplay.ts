@@ -108,19 +108,28 @@ const useTabs2SceneDisplayStore = defineStore('tabs2SceneDisplay',{
                         ]
                     },
                     {
-                        name: '水养池',
-                        btnLevel:'2',
-                        leftMiddelListVisible: false, 
-                        list: [
-                            { title: '1号池水养动态', image: tip4_1,isActive:false, imgSrc: pic02 },
-                            { title: '2号池水养动态', image: tip4_2,isActive:false, imgSrc: pic02 },
-                            { title: '3号池水养动态', image: tip4_3,isActive:false, imgSrc: pic02 },
-                            { title: '4号池水养动态', image: tip4_4,isActive:false, imgSrc: pic02 },
-                            { title: '5号池水养动态', image: tip4_5,isActive:false, imgSrc: pic02 },
-                            { title: '6号池水养动态', image: tip4_6,isActive:false, imgSrc: pic02 },
-                            { title: '7号池水养动态', image: tip4_7,isActive:false, imgSrc: pic02 },
-                            { title: '8号池水养动态', image: tip4_8,isActive:false, imgSrc: pic02 }
-                        ]
+                        // name: '水养池',
+                        // btnLevel:'2',
+                        // leftMiddelListVisible: false, 
+                        // list: [
+                        //     { title: '1号池水养动态', image: tip4_1,isActive:false, imgSrc: pic02 },
+                        //     { title: '2号池水养动态', image: tip4_2,isActive:false, imgSrc: pic02 },
+                        //     { title: '3号池水养动态', image: tip4_3,isActive:false, imgSrc: pic02 },
+                        //     { title: '4号池水养动态', image: tip4_4,isActive:false, imgSrc: pic02 },
+                        //     { title: '5号池水养动态', image: tip4_5,isActive:false, imgSrc: pic02 },
+                        //     { title: '6号池水养动态', image: tip4_6,isActive:false, imgSrc: pic02 },
+                        //     { title: '7号池水养动态', image: tip4_7,isActive:false, imgSrc: pic02 },
+                        //     { title: '8号池水养动态', image: tip4_8,isActive:false, imgSrc: pic02 }
+                        // ]
+                        name: '水养池', 
+                        list: [] ,
+                        btnLevel:'1',
+                        isActive:false,
+                        identification:'3',
+                        echartsDomName: 'init4', 
+                        
+                        imgSrc: pic01 ,
+                        leftMiddelListVisible: false 
                     },
                     {
                         name: '堆场',
@@ -149,10 +158,19 @@ const useTabs2SceneDisplayStore = defineStore('tabs2SceneDisplay',{
                             { title: '原料库存数量', image: tip7_2,isActive:false, imgSrc: pic02 }
                         ]
                     },
-                    { name: '试验室', list: [] ,btnLevel:'1',isActive:false,identification:'3',echartsDomName: 'init3', imgSrc: pic01 ,leftMiddelListVisible: false }
+                    { 
+                        name: '试验室', 
+                        list: [] ,
+                        btnLevel:'1',
+                        isActive:false,
+                        identification:'3',
+                        echartsDomName: 'init3', 
+                        imgSrc: pic01 ,
+                        leftMiddelListVisible: false 
+                    }
                 ] , 
 
-            companyName:'可切换tab2',
+            companyName:'场景切换',
             showpicturelist: false,
             showId : 2,
             routePath:'tabs2SceneDisplay',
@@ -172,11 +190,20 @@ const useTabs2SceneDisplayStore = defineStore('tabs2SceneDisplay',{
         changeDialogTableVisible(action:any) {
             this.dialogTableVisible  = action
         },
-        // 给与echartsDomList 进行赋值 
-        getechartsDomList(arr :any) {
-            this.echartsDomList = arr
+        // 给与echartsDomList 进行赋值  // 根据传入值 发送ajax请求
+        async getechartsDomListByWater() {
+            // console.log(23223);
+            
+            const res = await request.get('api/BIM1000/getWaterData')
+            // console.log(res.data.data);
+           
+            
+           this.echartsDomList = res.data.data
+        },
+        // 关闭dialog弹框时的重置
+        RefeshEchartsList() {
+            this.echartsDomList = []
         }
-
     },
     getters: { 
         // 用于控制 app-flex 组件内 左侧list 显示隐藏

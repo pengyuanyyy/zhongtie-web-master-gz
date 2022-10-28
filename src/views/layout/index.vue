@@ -80,9 +80,9 @@ const chooseBtn = (item1 : any) => {
 
     <!-- 路由出口 图标内容展示区 -->
     <div  class="app-body">   
-        <keep-alive>     
+        <!-- <keep-alive>      -->
             <router-view></router-view>  
-        </keep-alive>   
+        <!-- </keep-alive>    -->
     </div>
     <!-- 页面底部部分 -->
     <footer class="flex">

@@ -4,7 +4,7 @@ import useStore from "@/store/index";
 
 import {onBeforeRouteLeave} from "vue-router";
 import pic01 from "@/assets/images/img/视频监控.jpg";
-import { init1 ,init2,init3} from "@/utils/echartsDom/tabs2SceneDisplayEchartsDom";
+import { init1 ,init2,init3,init4} from "@/utils/echartsDom/tabs2SceneDisplayEchartsDom";
 
 const main = ref() // 使用ref创建虚拟DOM引用，使用时用main.value
 
@@ -63,12 +63,16 @@ onMounted(()=>{
  
 
 
-
+// 控制弹窗显示与隐藏
 const dialogTableVisible = ref(false)
 
+// 控制表头信息
 const headText  = ref('')
+
+// 控制 当显示图片时 显示的图片
 const contentPictrue = ref('')
 
+// 这个值 用于控制确认是几级按钮
 const identification :any  = ref('')
 
 // dialog弹框业务逻辑
@@ -82,7 +86,7 @@ const showDialog = (name:any , imgSrc:any) => {
        return  item.name === name
     })
 
-    console.log(itemcheck[0].btnLevel);
+    // console.log(itemcheck[0].btnLevel);
     if (itemcheck[0].btnLevel === '1') {
         // 控制弹窗开启
         dialogTableVisible.value = true
@@ -100,7 +104,7 @@ const showDialog = (name:any , imgSrc:any) => {
 
 
                 //4.在组件挂载的生命周期中获取到DOM节点
-                nextTick(()=>{
+                nextTick(async ()=>{
                     // 根据echartsDomName 判定传入的echarts信息数据
                     if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init1') {
                         init1(main,tabs2SceneDisplay.echartsDomList)
@@ -109,9 +113,14 @@ const showDialog = (name:any , imgSrc:any) => {
                         init2(main,tabs2SceneDisplay.echartsDomList)
                     }                    
                     if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init3') {
+                        
                         init3(main,tabs2SceneDisplay.echartsDomList)
                     }                    
-
+                    if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init4') {
+                        // 执行获取接口命令 // 获取水温 PH值
+                        await tabs2SceneDisplay.getechartsDomListByWater()
+                        init4(main,tabs2SceneDisplay.echartsDomList)
+                    } 
                     
                 })
             
@@ -219,6 +228,9 @@ const dialogClose = () => {
         }
     )
     identification.value = ''
+    // 弹窗关闭 echartsDomList变更为[]
+    tabs2SceneDisplay.RefeshEchartsList()
+
 } 
 
 
