@@ -27,7 +27,6 @@ onBeforeRouteLeave((to) => {
             
 })
 
-        
 // 定义一个初始值 为false
 let showpicturelist = ref(false)
 // 在mounted钩子中拿数据
@@ -90,6 +89,9 @@ const showDialog = (name:any , imgSrc:any) => {
     if (itemcheck[0].btnLevel === '1') {
         // 控制弹窗开启
         dialogTableVisible.value = true
+
+
+
         // 点击时应把 LeftMiddlelist 隐藏 所以直接全部设置为false  如此可以避免不必要的逻辑判断 不显示即不用进行操作
         tabs2SceneDisplay.list1.forEach(item => item.leftMiddelListVisible = false)
         // 修改pinia中弹窗对应数据 (模型切换请求发送时,判断弹窗状态再发送请求)
@@ -107,19 +109,44 @@ const showDialog = (name:any , imgSrc:any) => {
                 nextTick(async ()=>{
                     // 根据echartsDomName 判定传入的echarts信息数据
                     if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init1') {
-                        init1(main,tabs2SceneDisplay.echartsDomList)
+                        init1(main,tabs2SceneDisplay.echartsDomList)       
+                        if (dialogTableVisible.value === true) {
+                            
+                            window.onresize = init1(main,tabs2SceneDisplay.echartsDomList).resize
+                            
+                        }
+                        
+                        // window.addEventListener("resize", () => {
+                        //     .resize();
+                            
+                        // });               
                     }
                     if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init2') {
                         init2(main,tabs2SceneDisplay.echartsDomList)
+                        if (dialogTableVisible.value === true) {
+                            
+                            window.onresize = init2(main,tabs2SceneDisplay.echartsDomList).resize
+                            
+                        }
                     }                    
                     if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init3') {
                         
                         init3(main,tabs2SceneDisplay.echartsDomList)
+                        if (dialogTableVisible.value === true) {
+                            
+                            window.onresize = init3(main,tabs2SceneDisplay.echartsDomList).resize
+                            
+                        }
                     }                    
                     if (tabs2SceneDisplay.list1[isActiveIndex].echartsDomName === 'init4') {
                         // 执行获取接口命令 // 获取水温 PH值
                         await tabs2SceneDisplay.getechartsDomListByWater()
                         init4(main,tabs2SceneDisplay.echartsDomList)
+                        if (dialogTableVisible.value === true) {
+                            
+                            window.onresize = init4(main,tabs2SceneDisplay.echartsDomList).resize
+                            
+                        }
                     } 
                     
                 })
@@ -192,7 +219,7 @@ const showDialog = (name:any , imgSrc:any) => {
             }
             // 值赋予这个list 
             
-            console.log(appFlexLeft.leftList);// 打印观察 后续在flex left组件选择 3级按钮 再回到本页面添加
+            console.log(appFlexLeft.leftList);// 打印观察 后续在flex left组件选择 3级按钮 在flex left 页面添加dialog弹框
             
         }
         // 控制左侧leftMiddelList  // 取反操作 后续控制左侧leftList显示与隐藏
@@ -207,6 +234,9 @@ const showDialog = (name:any , imgSrc:any) => {
 
 
 }
+
+
+
 
 // 弹窗关闭时,将视频关闭
 const dialogClose = () => {
@@ -287,7 +317,7 @@ const dialogClose = () => {
                 </template>
                 <template v-if="identification === '3'">
 
-                    <div ref="main" style="width: 100%; height: 100%"></div>
+                    <div ref="main" id="bar" style="width: 100%; height: 100%"></div>
                 </template>                
             </div>
             <div class="footerText">
@@ -311,7 +341,9 @@ const dialogClose = () => {
     padding: 0 !important;
 
 }
-
+:deep(.el-dialog__headerbtn) {
+    z-index: 1;
+}
 .actived2 {
     background-color: #09f;
 }

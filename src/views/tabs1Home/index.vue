@@ -75,6 +75,11 @@ const showDialog = (name:any , imgSrc:any) => {
     contentPictrue.value = imgSrc
 }
 
+// 弹窗打开时业务逻辑
+const open= ()=> {
+
+}
+
 // 弹窗关闭时,将视频关闭
 const dialogClose = () => {
     contentPictrue.value = '@/assets/images/img/视频监控.jpg'
@@ -111,6 +116,7 @@ const dialogClose = () => {
         :modal="false"        
         :close-on-click-modal="false"
         width="60%" 
+        @open="open"
         @close="dialogClose"
         class="trans"
         align-center>

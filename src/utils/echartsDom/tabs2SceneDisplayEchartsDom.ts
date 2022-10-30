@@ -109,7 +109,8 @@ export const init1 = (main:any ,echartsDomList:any) => {
             trigger: 'axis',
             axisPointer: {
             type: 'shadow'
-            }
+            },
+            
         },
         legend: {
             data: ['Forest', 'Steppe', 'Desert', 'Wetland']
@@ -201,6 +202,7 @@ export const init1 = (main:any ,echartsDomList:any) => {
         };
 
         option && myChart.setOption(option);
+        return myChart as any
 }  
  
 
@@ -302,10 +304,11 @@ export const init2 = (main:any ,echartsDomList:any) => {
     //   }
     // });
     myChart.setOption(option);
+    
   });
   
   option && myChart.setOption(option);
-  
+  return myChart as any
 } 
 // 横向柱状图 双折线
 export const init3 = (main:any ,echartsDomList:any) => {
@@ -484,12 +487,13 @@ export const init3 = (main:any ,echartsDomList:any) => {
   };
     
     option && myChart.setOption(option);
+    return myChart as any
 } 
 
 
 // 水氧池 水温 PH图
 export const init4 =  (main:any ,echartsDomList:any) => {
- const timeList =  ['00:00', '01:00', '02:00', '03:00', '04:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00','12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
+ const timeList =  ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00','12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
   
   let waterList:any = [] 
   let PHList:any = []
@@ -505,6 +509,8 @@ export const init4 =  (main:any ,echartsDomList:any) => {
     function water(name:any) {
       // 1号水池温度数据 筛选所有一号水池温度 
       const waterList1 =  waterList.filter((item:any)=> item.name === name)
+      // console.log(waterList1);
+      
       // const arr1:any = [] //定义空数组 用于装载有数据时间的下标
       // x轴一定为24项数组 那么可以定义一个空数组
       const waterList1SW = ['', '', '', '', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '', '', '', '', '']
@@ -512,8 +518,10 @@ export const init4 =  (main:any ,echartsDomList:any) => {
         const index =  timeList.findIndex(i=> i === item.xAxis)
         if (index !== -1) {
           // 每当找到不为1的item 把item的y轴值赋值给该数组
+          // console.log(index);
+          
           waterList1SW[index] = item.yAxis
-
+          
         }
       })
       // console.log(arr1)
@@ -528,7 +536,8 @@ export const init4 =  (main:any ,echartsDomList:any) => {
       // })
       // // console.log(waterList1SW);
       
-
+      // console.log(waterList1SW);
+      
       return waterList1SW
     }   
     
@@ -543,6 +552,7 @@ export const init4 =  (main:any ,echartsDomList:any) => {
       if (index !== -1) {
           // 每当找到不为1的item 把item的y轴值赋值给该数组
           PHList1SW[index] = item.yAxis
+          
       }
     })
     // console.log(arr1);
@@ -674,9 +684,50 @@ export const init4 =  (main:any ,echartsDomList:any) => {
     tooltip: {
       trigger: 'axis', // 提示框 坐标轴触发
       textStyle:{
+        align:'left' //文字左对齐       
+      },
+      // formatter: function(params:any) {
+      //   let str = '';
+      //   params.forEach((item:any, idx:any) => {
+      //     str += `${item.marker}${item.seriesName}: ${item.data}`
+      //     switch (idx){
+      //         // case 0:
+      //         //     str += '个';
+      //         //     break;
+      //         // case 1:
+      //         //     str += '条';
+      //         //     break;
+      //         // case 2:
+      //         //     str += '次';
+      //         //     break;
+      //         default:
+      //             str += 'PH'
+      //     }
+      //     str += idx === params.length -1? '': '<br/>'
+      //   })
+      //   return str
+      // }    
+      // tooltip: {
+      //   show: true,
+      //   trigger: 'axis',
+      //   formatter: function (seriesData, ticket, callback) {
+      //   var showHtm="";
+      //   for(var i=0;i<seriesData.length;i++){
+      //   //名称
+      //   var name = seriesData[i].seriesName;
+      //   //x轴名称
+      //   var text = seriesData[i].name;
+      //   //值
+      //   var value = seriesData[i].value;
+      //   if(i==0){
+      //   showHtm = text+ '<br>';
+      //   }
+      //   showHtm+= name + ': ' + value+'%'+'<br>'
+      //   }
+      //   return showHtm;
+      //   }
 
-        align:'left' //文字左对齐
-      }
+
     },
     axisLabel: {//坐标轴轴线相关设置
       show: true,
@@ -921,4 +972,5 @@ export const init4 =  (main:any ,echartsDomList:any) => {
   };
   
   option && myChart.setOption(option);
+  return myChart as any
 } 

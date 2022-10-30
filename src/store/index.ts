@@ -6,6 +6,7 @@ import useTabs4EmulationStore from './modules/tabs4Emulation'
 
 import useLayoutStore from "./modules/layout";
 import useappFlexLeftStore from "./modules/appFlexLeft";
+import useappFlexRightStore from "./modules/appFlexRight";
 
 export default function useStore() {
     return {
@@ -15,6 +16,7 @@ export default function useStore() {
         tabs3ProjectTracking: useTabs3ProjectTrackingStore(),
         tabs4Emulation: useTabs4EmulationStore(),
         layout:useLayoutStore(),
-        appFlexLeft:useappFlexLeftStore()
+        appFlexLeft:useappFlexLeftStore(),
+        appFlexRight:useappFlexRightStore(),
     }
 }

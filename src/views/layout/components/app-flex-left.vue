@@ -13,6 +13,7 @@ const  {tabs2SceneDisplay}  = useStore()
 const  {tabs3ProjectTracking}  = useStore() 
 const  {tabs4Emulation}  = useStore() 
 const  {appFlexLeft} = useStore()
+const  {appFlexRight} = useStore()
 
 
 const leftMiddelListVisible1 = ref(false)
@@ -31,7 +32,7 @@ const mm = () => {
     const routePath = route.path.substring(1)
 
 
-
+    // 确认路由来源位置
     if (routePath === tabs1Home.routePath   ) {
         if (tabs1Home.dialogTableVisible === true) {
             // 确认对应路由位置
@@ -114,7 +115,32 @@ const mm = () => {
     if (routePath === tabs4Emulation.routePath) {
         console.log('来自tabs4Emulation');
     }
+    // 其他情况 左右侧弹框是否打开 打开执行业务逻辑
+    if (appFlexLeft.dialogTableVisible === true ) {
+        
+    }
+    // 
+    if (appFlexLeft.dialogTableVisible === true ) {
+        
+    }
+}
 
+// 弹窗关闭时,将视频关闭
+const dialogClose = () => {
+    // dialogTableVisible.value = false 
+    // contentPictrue.value = pic01 // 修改图片的src
+    appFlexRight.changeDialogTableVisible(false)// 弹窗关闭
+    // appFlexRight.list1.forEach(
+
+    // )
+    // identification.value = ''
+    // 弹窗关闭 echartsDomList变更为[]
+    // tabs2SceneDisplay.RefeshEchartsList()
+
+}
+// 打开弹窗操作
+const showDialog = (name:any , img:any) => {
+    appFlexRight.changeDialogTableVisible(true)
 }
 
 </script>
@@ -127,7 +153,7 @@ const mm = () => {
             <div class="main-menu flex" v-show="tabs2SceneDisplay.leftMiddelListVisible1">
                 <ul>
                     <li v-for="(item, index) in appFlexLeft.leftList.list" :key="index"
-                    @click="">
+                    @click="showDialog(item.name ,item.imgSrc)">
                         <img class="leftLiImg" :src="item.image" height="40">
                         <!-- <div v-else class="flex flex-align-center">{{item.title}}</div> -->
                     </li>
@@ -142,10 +168,67 @@ const mm = () => {
                 <li ><img src="@/assets/images/img/fixed-left-icon3.png" alt=""></li>
                 <li ><img src="@/assets/images/img/fixed-left-icon4.png" alt=""></li>
             </ul>
+                    <!-- dialog弹框 -->
+        
+
+        </div>
+        <div>
+            <el-dialog 
+        v-model="appFlexRight.dialogTableVisible"
+        :modal="false" 
+        width="19%" 
+        @close="dialogClose"
+        :close-on-click-modal="false"
+        class="trans"
+        align-center>
+          <div class="ShowPhoto">
+            <div class="headText">
+                <span>111</span>
+            </div>
+            <div class="contentPictrue">
+                <el-col>
+                    <el-row></el-row>
+                </el-col>
+
+
+
+<!--                 <template v-if="identification === '1'">
+                    <video 
+                        :src="contentPictrue"                
+                        controls               
+                        height="520"
+                    ></video>                    
+                </template>
+                <template v-if="identification === '2'">
+                    <img :src="contentPictrue"  alt="">
+                </template> -->
+                <!-- <template v-if="identification === '3'"> -->
+
+                    <!-- <div ref="main" id="bar" style="width: 100%; height: 100%"></div> -->
+                <!-- </template>                 -->
+            </div>
+            <div class="footerText">
+                <span>{{tabs2SceneDisplay.companyName}}</span> 
+            </div>
+          </div>
+        </el-dialog>
         </div>
 </template>
 
 <style lang="less" scoped>
+:deep(.el-dialog) {
+    background: rgba(0, 0, 0, 0) !important; //弹出层透明;
+    // background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) , rgba(0, 0, 0,) 100% )!important;
+    border-radius: 20px;
+    transform: translate(-120%,-7%);
+
+}
+:deep(.el-dialog__body) {
+    padding: 0 !important;
+
+}
+
+
 .fixed-left {
     position: absolute;
     left: 0;
@@ -266,5 +349,42 @@ const mm = () => {
     -webkit-transform: translateY(1px);
     -moz-transform: translateY(1px);
 }
+
+
+.headText span{
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    font-size: 30px;
+    font-family: 'TTMeiHeiJ-2';
+    letter-spacing: .1em;
+    color: #000;
+}
+
+.footerText span {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+}
+.contentPictrue {
+    // margin-left: 45px;
+
+    // width: 360px;
+    width: 100%;
+    height: 520px;
+
+    background-color: #09f;
+}
+.contentPictrue img {
+    width: 100%;
+    height: 100%;
+}
+
 
 </style>

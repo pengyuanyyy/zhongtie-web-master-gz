@@ -114,23 +114,23 @@ const chooseBtn = (item1 : any) => {
     //     min-height: 600px;
     // }
 
-    @charset "utf-8";
+@charset "utf-8";
 
 [v-cloak] {
     display: none;
 }
 
-#app {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-image: url("../img/app-bg.jpg");
-    background-size: 100% 100%;
-    background-color: #213073;
-    overflow: hidden;
-}
+// #app {
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     background-image: url("../img/app-bg.jpg");
+//     background-size: 100% 100%;
+//     background-color: #213073;
+//     overflow: hidden;
+// }
 
 header {
     justify-content: space-between;
@@ -164,7 +164,7 @@ header .content {
     height: 100px;
     background-repeat: no-repeat;
     background-position: top;
-    font-size: 30px;
+    font-size: 40px;
     color: #ffffff;
 }
 
@@ -273,7 +273,7 @@ footer .menu li span {
     color: #ffffff;
     margin-top: 11px;
     width: 30px;
-    padding-left: 19.5px;
+    padding-left: 21.5px;
 }
 
 

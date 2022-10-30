@@ -12,6 +12,10 @@ import 'element-plus/dist/index.css'
 // 导入路由对象
 import router from './router';
 
+// 导入网站公共样式
+import  '@/assets/styles/common.less'
+
+
 // 导入 pinia
 import { createPinia } from "pinia";
 

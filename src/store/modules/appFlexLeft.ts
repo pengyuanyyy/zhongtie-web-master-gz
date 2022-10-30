@@ -8,6 +8,7 @@ const useappFlexLeftStore = defineStore('appFlexLeft',{
         return {
             leftList : [] as any,
             dialogTableVisible: false,
+            companyName:'来自appFlexLeft'
         }
     },
     actions: {

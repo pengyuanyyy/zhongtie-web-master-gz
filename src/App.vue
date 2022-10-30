@@ -14,7 +14,7 @@ window.addEventListener(
 
 <template>
 
-    <div id="app">
+    <div id="app1">
       
         <router-view></router-view>
       
@@ -24,7 +24,7 @@ window.addEventListener(
 </template>
 
 <style scoped lang="less">
-#app {
+#app1 {
     position: absolute;
     left: 0;
     right: 0;
@@ -32,7 +32,7 @@ window.addEventListener(
     bottom: 0;
     background-image: url("@/assets/images/img/app-bg.jpg");
     background-size: cover;
-    background-color: #213073;
+    background-color: rgb(56, 76, 167);
 
 }
 
